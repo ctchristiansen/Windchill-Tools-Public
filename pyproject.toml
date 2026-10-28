@@ -1,0 +1,20 @@
+[project]
+name = "windchill-tools"
+version = "0.1.0"
+description = "Tools and scripts for PTC Windchill"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "windchill-api",
+    "windchill-scripts",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["libs/*", "scripts"]
+
+[tool.uv.sources]
+windchill-api = { workspace = true }
+windchill-scripts = { workspace = true }
