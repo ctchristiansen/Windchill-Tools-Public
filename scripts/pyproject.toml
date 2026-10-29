@@ -1,14 +1,39 @@
 [project]
 name = "windchill-scripts"
 version = "0.1.0"
-description = "Utility scripts for PTC Windchill"
+description = "Admin scripts for PTC Windchill. Each module can run on its own or be imported."
 requires-python = ">=3.10"
 dependencies = [
     "windchill-api",
 ]
 
-[tool.uv]
-package = false
+[project.optional-dependencies]
+# Database drivers for queue_monitor; install the one for your Windchill database.
+oracle = ["oracledb>=2.0"]
+sqlserver = ["pyodbc>=5.0"]
+
+[project.scripts]
+find-illegal-folder-names = "windchill_scripts.find_illegal_folder_names:main"
+checked-out-report = "windchill_scripts.checked_out_report:main"
+empty-folders = "windchill_scripts.empty_folders:main"
+duplicate-names = "windchill_scripts.duplicate_names:main"
+attribute-audit = "windchill_scripts.attribute_audit:main"
+inactive-users = "windchill_scripts.inactive_users:main"
+team-membership-audit = "windchill_scripts.team_membership_audit:main"
+group-membership-snapshot = "windchill_scripts.group_membership_snapshot:main"
+stalled-workflow-tasks = "windchill_scripts.stalled_workflow_tasks:main"
+change-aging = "windchill_scripts.change_aging:main"
+release-activity = "windchill_scripts.release_activity:main"
+queue-monitor = "windchill_scripts.queue_monitor:main"
+log-scanner = "windchill_scripts.log_scanner:main"
+vault-usage = "windchill_scripts.vault_usage:main"
+smoke-test = "windchill_scripts.smoke_test:main"
+rename-folders = "windchill_scripts.rename_folders:main"
+bulk-reassign = "windchill_scripts.bulk_reassign:main"
 
 [tool.uv.sources]
 windchill-api = { workspace = true }
+
+[build-system]
+requires = ["uv_build>=0.11.0,<0.12.0"]
+build-backend = "uv_build"

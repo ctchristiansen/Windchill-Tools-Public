@@ -5,4 +5,10 @@ __pycache__/
 dist/
 build/
 .python-version
-illegal_folder_names*.txt
+.pytest_cache/
+.ruff_cache/
+
+# Script output
+*.txt
+group_snapshots/
+vault_usage_history.csv
